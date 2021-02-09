@@ -2,6 +2,8 @@
   <div class="container">
     <div>
       <Logo />
+      <UserLabel :user="{firstName: 'minwook', lastName: 'jo'}"/>
+      <ReviewLabel :review="{title: 'title', content: 'content'}" :score="5" @click="print"/>
       <h1 class="title">
         nuxt-ts-sample
       </h1>
@@ -29,8 +31,20 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import UserLabel from '../components/UserLabel.vue';
+import ReviewLabel from '../components/ReviewLabel.vue';
 
-export default Vue.extend({})
+export default Vue.extend({
+  components: {
+    UserLabel,
+    ReviewLabel
+  },
+  methods: {
+    print(e: Event) {
+      console.log('parent', e);
+    }
+  }
+})
 </script>
 
 <style>
